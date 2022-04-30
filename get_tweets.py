@@ -29,14 +29,14 @@ if len(account_list) > 0:
         print("Getting data for " + target)
         item = auth_api.get_user(screen_name=target)
         tweet_count = 0
-        with open(target + ".csv", 'w', encoding="utf-8") as csvfile:
+        with open(target + ".csv", 'w', encoding="utf-8", newline='') as csvfile:
             writer = csv.writer(csvfile)
             for status in Cursor(auth_api.user_timeline, screen_name=target).items():
                 if not status.text.startswith("RT") and not status.text.startswith("@"):
                     if not "/" in status.text:
                         tweet_count += 1
                         print(status.text)
-                        writer.writerow([status.text.rstrip()])
+                        writer.writerow([status.text])
 
         print("name: " + item.name)
         print("screen_name: " + item.screen_name)
