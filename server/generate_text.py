@@ -6,7 +6,7 @@ class Generator:
         self.model_name = "124M"
         # gpt2.download_gpt2(model_name=model_name)
 
-        self.sess = gpt2.start_tf_sess()
+        self.sess = gpt2.start_tf_sess(threads=1)
         gpt2.load_gpt2(self.sess, run_name="run1")
 
     def generate(self):
