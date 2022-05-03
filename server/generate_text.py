@@ -9,13 +9,14 @@ class Generator:
         self.sess = gpt2.start_tf_sess(threads=1)
         gpt2.load_gpt2(self.sess, run_name="run1")
 
-    def generate(self):
+    def generate(self, length, temprature, prefix):
         return gpt2.generate(self.sess,
-                             length=100,
-                             temperature=1,
+                             length=length,
+                             temperature=temprature,
                              nsamples=1,
                              batch_size=1,
-                             return_as_list=True
+                             return_as_list=True,
+                             prefix=prefix
                              )[0]
 
 
